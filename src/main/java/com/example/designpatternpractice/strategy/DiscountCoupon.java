@@ -1,4 +1,4 @@
-package com.example.designpatternpractice;
+package com.example.designpatternpractice.strategy;
 
 public class DiscountCoupon implements Coupon {
     private int discount;

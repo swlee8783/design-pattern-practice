@@ -1,4 +1,6 @@
-package com.example.designpatternpractice;
+package com.example.designpatternpractice.strategy;
+
+import com.example.designpatternpractice.strategy.Coupon;
 
 public class Product {
     private String name;

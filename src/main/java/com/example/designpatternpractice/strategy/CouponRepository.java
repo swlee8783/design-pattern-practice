@@ -1,4 +1,4 @@
-package com.example.designpatternpractice;
+package com.example.designpatternpractice.strategy;
 
 import java.util.Optional;
 

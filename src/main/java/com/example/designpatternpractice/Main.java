@@ -4,6 +4,11 @@ package com.example.designpatternpractice;
 import com.example.designpatternpractice.proxy.QueryExcecutorImpl;
 import com.example.designpatternpractice.proxy.QueryExecutor;
 import com.example.designpatternpractice.proxy.ReadOnlyQueryExecutor;
+import com.example.designpatternpractice.strategy.CouponService;
+import com.example.designpatternpractice.template.key.AlphabetKey;
+import com.example.designpatternpractice.template.key.KeyboardKey;
+import com.example.designpatternpractice.template.keyboard.Keyboard;
+import com.example.designpatternpractice.template.keyboard.LoggingKeyboard;
 import org.springframework.context.annotation.Bean;
 
 public class Main {
@@ -58,7 +63,6 @@ public class Main {
 
         /*
         Strategy
-         */
 
 //        Coupon discountCoupon = new DiscountCoupon(2000);
 //        System.out.println(discountCoupon.calc(3000));
@@ -79,6 +83,19 @@ public class Main {
 //        Coupon discountCoupon = couponService.getCoupon(500L);
 //        System.out.println(discountCoupon.calc(productPrice));
 
+         */
+
+        /*
+        template method
+         */
+
+//        Keyboard keyboard = new LoggingKeyboard();
+
+        Keyboard keyboard = new EscKeyMonitoringKeyboard();
+        keyboard.press(new AlphabetKey("A"));
+        keyboard.press(new AlphabetKey("B"));
+        keyboard.press(new AlphabetKey("C"));
+        keyboard.press(new AlphabetKey("ESC"));
     }
 
     @Bean
