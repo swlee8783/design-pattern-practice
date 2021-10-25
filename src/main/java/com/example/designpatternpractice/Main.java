@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean;
 public class Main {
     private QueryExecutor readOnlyQueryExecutor;
 
+    // 실제 Spring 사용시 new 하지 말고 Bean 사용
+    private static CouponService couponService = new CouponService();
+
     public Main(QueryExecutor readOnlyQueryExecutor){
         this.readOnlyQueryExecutor = readOnlyQueryExecutor;
     }
@@ -52,6 +55,29 @@ public class Main {
         readOnlyQueryExecutor.execute("delete from user where id = 2");
 
          */
+
+        /*
+        Strategy
+         */
+
+//        Coupon discountCoupon = new DiscountCoupon(2000);
+//        System.out.println(discountCoupon.calc(3000));
+//
+//        Coupon percentageCoupon = new PercentageCoupon(15);
+//        System.out.println(percentageCoupon.calc(3000));
+
+        int productPrice = 1000;
+
+        Product iPadPro = new Product("아이패드 프로", 15000000);
+
+        Coupon percentageCoupon = couponService.getCoupon(10L);
+//        System.out.println(percentageCoupon.calc(productPrice));
+
+        int discountAmount = iPadPro.discount(percentageCoupon);
+        System.out.println("최종 가격: " + discountAmount);
+
+//        Coupon discountCoupon = couponService.getCoupon(500L);
+//        System.out.println(discountCoupon.calc(productPrice));
 
     }
 
