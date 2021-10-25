@@ -5,10 +5,9 @@ import com.example.designpatternpractice.proxy.QueryExcecutorImpl;
 import com.example.designpatternpractice.proxy.QueryExecutor;
 import com.example.designpatternpractice.proxy.ReadOnlyQueryExecutor;
 import com.example.designpatternpractice.strategy.CouponService;
-import com.example.designpatternpractice.template.key.AlphabetKey;
-import com.example.designpatternpractice.template.key.KeyboardKey;
-import com.example.designpatternpractice.template.keyboard.Keyboard;
-import com.example.designpatternpractice.template.keyboard.LoggingKeyboard;
+import com.example.designpatternpractice.templatemethod.EscKeyMonitoringKeyboard;
+import com.example.designpatternpractice.templatemethod.key.AlphabetKey;
+import com.example.designpatternpractice.templatemethod.keyboard.Keyboard;
 import org.springframework.context.annotation.Bean;
 
 public class Main {
@@ -87,7 +86,6 @@ public class Main {
 
         /*
         template method
-         */
 
 //        Keyboard keyboard = new LoggingKeyboard();
 
@@ -96,6 +94,27 @@ public class Main {
         keyboard.press(new AlphabetKey("B"));
         keyboard.press(new AlphabetKey("C"));
         keyboard.press(new AlphabetKey("ESC"));
+
+         */
+
+        /*
+        chain of responsibility
+         */
+
+        User user = new User();
+
+        MessageSenderChain smsSenderChain = new SmsSenderChain();
+//        MessageSenderChain pushSenderChain = new PushSenderChain();
+//        MessageSenderChain emailSenderChain = new EmailSenderChain();
+
+        smsSenderChain.next(new PushSenderChain())
+                .next(new EmailSenderChain());
+
+//        smsSenderChain.setNext(pushSenderChain);
+//        pushSenderChain.setNext(emailSenderChain);
+
+        // 실제로는 해당 내용만 작성함으로써 로직 수행
+        smsSenderChain.send(user, new MessageDetail());
     }
 
     @Bean

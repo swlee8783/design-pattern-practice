@@ -1,7 +1,7 @@
-package com.example.designpatternpractice;
+package com.example.designpatternpractice.templatemethod;
 
-import com.example.designpatternpractice.template.key.KeyboardKey;
-import com.example.designpatternpractice.template.keyboard.Keyboard;
+import com.example.designpatternpractice.templatemethod.key.KeyboardKey;
+import com.example.designpatternpractice.templatemethod.keyboard.Keyboard;
 
 public class EscKeyMonitoringKeyboard extends Keyboard {
     @Override

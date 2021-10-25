@@ -1,6 +1,6 @@
-package com.example.designpatternpractice.template.keyboard;
+package com.example.designpatternpractice.templatemethod.keyboard;
 
-import com.example.designpatternpractice.template.key.KeyboardKey;
+import com.example.designpatternpractice.templatemethod.key.KeyboardKey;
 
 public class LoggingKeyboard extends Keyboard {
     @Override
